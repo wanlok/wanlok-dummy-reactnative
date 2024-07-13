@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LandingScreen from './screens/LandingScreen';
-import SecondScreen from './screens/SecondScreen';
+import LandingScreen from './screen/LandingScreen';
+import SecondScreen from './screen/SecondScreen';
 
 export type RootStackParamList = {
   LandingScreen: undefined;
