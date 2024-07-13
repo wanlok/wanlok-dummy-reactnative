@@ -10,12 +10,18 @@ const styles = StyleSheet.create({
     paddingLeft: paddingSize,
     paddingRight: paddingSize,
   },
-  text: {
+  title: {
     fontSize: fontSize,
     marginBottom: 8,
   },
   textInputContainer: {
     borderColor: 'black',
+    borderWidth: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  errorTextInputContainer: {
+    borderColor: 'red',
     borderWidth: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -29,6 +35,11 @@ const styles = StyleSheet.create({
     fontSize: fontSize,
     paddingLeft: paddingSize,
     paddingRight: paddingSize,
+  },
+  errorText: {
+    color: 'red',
+    fontSize: fontSize,
+    marginTop: 8,
   },
 });
 
@@ -45,8 +56,8 @@ const MyTextField: FC<{
         ...styles.container,
         marginTop: marginTop !== null ? marginTop : 0,
       }}>
-      <Text style={styles.text}>{title}</Text>
-      <View style={styles.textInputContainer}>
+      <Text style={styles.title}>{title}</Text>
+      <View style={styles.errorTextInputContainer}>
         <Text style={styles.textInputText}>$</Text>
         <TextInput
           value={value}
@@ -61,6 +72,7 @@ const MyTextField: FC<{
           }}
         />
       </View>
+      <Text style={styles.errorText}>Error</Text>
     </View>
   );
 };

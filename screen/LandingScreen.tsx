@@ -25,6 +25,7 @@ const LandingScreen: FC<{
         marginTop={16}
       />
       <MyButton
+        title="CALCULATE"
         onPress={() =>
           navigation.navigate('SecondScreen', {
             data: estimatedPropertyValue + ' ::: ' + borrowAmount,
