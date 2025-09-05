@@ -3,7 +3,6 @@ import {
   FlatList,
   Pressable,
   SafeAreaView,
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -11,52 +10,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import React, {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useAuth0} from 'react-native-auth0';
-import {AuthenticatedRootStackParamList} from '../../AppStack';
-
-const styles = StyleSheet.create({
-  list: {
-    height: '100%',
-  },
-  itemPressable: {
-    backgroundColor: 'white',
-  },
-  item: {
-    padding: 16,
-  },
-  itemName: {
-    fontSize: 16,
-  },
-  separator: {
-    height: 1,
-    backgroundColor: 'black',
-  },
-});
-
-const screens: {
-  name: string;
-  screen: any;
-}[] = [
-  {
-    name: 'Starter',
-    screen: 'Starter',
-  },
-  {
-    name: 'Payment',
-    screen: 'Payment',
-  },
-  {
-    name: 'Rive',
-    screen: 'Rive',
-  },
-  {
-    name: 'Rive 2',
-    screen: 'Rive2',
-  },
-  {
-    name: 'Loan List',
-    screen: 'LoanList',
-  },
-];
+import {AuthenticatedRootStackParamList, screens} from '../../AppStack';
 
 const LandingPage = ({
   navigation,
@@ -68,7 +22,6 @@ const LandingPage = ({
   const onLogout = async () => {
     try {
       await clearSession();
-      // navigation.replace('Login');
     } catch (e) {
       console.log('Log out cancelled');
     }
@@ -85,7 +38,9 @@ const LandingPage = ({
       <SafeAreaProvider>
         <SafeAreaView>
           <FlatList
-            style={styles.list}
+            style={{
+              height: '100%',
+            }}
             data={screens}
             renderItem={({item, index}) => (
               <Pressable
@@ -93,10 +48,27 @@ const LandingPage = ({
                 onPress={() => {
                   navigation.navigate(item.screen);
                 }}
-                style={styles.itemPressable}>
-                {index > 0 && <View style={styles.separator} />}
-                <View style={styles.item}>
-                  <Text style={styles.itemName}>{item.name}</Text>
+                style={{
+                  backgroundColor: 'white',
+                }}>
+                {index > 0 && (
+                  <View
+                    style={{
+                      height: 1,
+                      backgroundColor: 'black',
+                    }}
+                  />
+                )}
+                <View
+                  style={{
+                    padding: 16,
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                    }}>
+                    {item.name}
+                  </Text>
                 </View>
               </Pressable>
             )}

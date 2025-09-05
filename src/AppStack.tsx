@@ -8,6 +8,32 @@ import Rive from './Pages/Rive';
 import Rive2 from './Pages/Rive2';
 import LoanList from './Pages/LoanList';
 
+export const screens: {
+  name: string;
+  screen: any;
+}[] = [
+  {
+    name: 'Starter',
+    screen: 'Starter',
+  },
+  {
+    name: 'Payment',
+    screen: 'Payment',
+  },
+  {
+    name: 'Rive',
+    screen: 'Rive',
+  },
+  {
+    name: 'Rive 2',
+    screen: 'Rive2',
+  },
+  {
+    name: 'Loan List',
+    screen: 'LoanList',
+  },
+];
+
 export type RootStackParamList = {
   Login: undefined;
 };
