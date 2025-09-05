@@ -30,13 +30,11 @@
 #endif
 }
 
-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url
-      options:(NSDictionary&lt;UIApplicationOpenURLOptionsKey, id&gt; *)options
-
-
-
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
 {
-return [RCTLinkingManager application:app openURL:url options:options];
+  return [RCTLinkingManager application:app openURL:url options:options];
 }
 
 @end
