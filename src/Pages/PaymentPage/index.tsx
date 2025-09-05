@@ -49,16 +49,20 @@ const b = (uri: string) => {
   );
 };
 
-export default () => {
+export const PaymentPage = () => {
   return (
     <View
       style={{
         flex: 1,
         backgroundColor: 'white',
         paddingLeft: 16,
-        paddingRight: 16
+        paddingRight: 16,
       }}>
-      <Image source={require('./logo.png')} resizeMode="contain" style={{ width: "100%", height: 200 }} />
+      <Image
+        source={require('./logo.png')}
+        resizeMode="contain"
+        style={{width: '100%', height: 200}}
+      />
       <WebView
         source={{uri: uri}}
         style={styles.webview}

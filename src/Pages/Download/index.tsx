@@ -94,5 +94,3 @@ interface Action {
 //     </View>
 //   );
 // };
-
-// export default LandingScreen;

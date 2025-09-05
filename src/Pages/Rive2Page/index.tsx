@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container: {},
 });
 
-const Screen = () => {
+export const Rive2Page = () => {
   const riveRef = useRef<RiveRef>(null);
 
   const play = () => {
@@ -38,5 +38,3 @@ const Screen = () => {
     </View>
   );
 };
-
-export default Screen;

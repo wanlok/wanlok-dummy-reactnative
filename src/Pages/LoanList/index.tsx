@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoanList = () => {
+export const LoanList = () => {
   return (
     <FlatList
       data={data}
@@ -150,5 +150,3 @@ const LoanList = () => {
     />
   );
 };
-
-export default LoanList;

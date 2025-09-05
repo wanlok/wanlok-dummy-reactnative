@@ -5,7 +5,7 @@ import Config from 'react-native-config';
 import {NavigationContainer} from '@react-navigation/native';
 import {AppStack} from './AppStack';
 
-const App = () => {
+export const App = () => {
   return (
     <Auth0Provider
       domain={Config.AUTH0_DOMAIN ?? ''}
@@ -16,5 +16,3 @@ const App = () => {
     </Auth0Provider>
   );
 };
-
-export default App;

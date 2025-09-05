@@ -1,13 +1,13 @@
 import {StyleSheet, Text, View} from 'react-native';
 import Rive, {Direction, LoopMode, RiveRef} from 'rive-react-native';
 import {useRef} from 'react';
-import WButton from '../../Component/WButton';
+import {WButton} from '../../Component/WButton';
 
 const styles = StyleSheet.create({
   container: {},
 });
 
-const Screen = () => {
+export const RivePage = () => {
   const riveRef = useRef<RiveRef>(null);
 
   const play = () => {
@@ -84,5 +84,3 @@ const Screen = () => {
     </View>
   );
 };
-
-export default Screen;

@@ -1,7 +1,7 @@
 import {Pressable, StyleProp, Text, ViewStyle} from 'react-native';
-import Colors from '../Utils/Colors';
+import {Colors} from '../Utils/Colors';
 
-const WButton = ({
+export const WButton = ({
   title,
   onPress,
   style,
@@ -34,5 +34,3 @@ const WButton = ({
     </Pressable>
   );
 };
-
-export default WButton;

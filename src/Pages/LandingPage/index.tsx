@@ -11,8 +11,9 @@ import React, {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useAuth0} from 'react-native-auth0';
 import {AuthenticatedRootStackParamList, screens} from '../../AppStack';
+import {Divider} from '../../Component/Divider';
 
-const LandingPage = ({
+export const LandingPage = ({
   navigation,
 }: {
   navigation: NativeStackNavigationProp<AuthenticatedRootStackParamList>;
@@ -34,50 +35,39 @@ const LandingPage = ({
   }, [navigation]);
 
   return (
-    <>
-      <SafeAreaProvider>
-        <SafeAreaView>
-          <FlatList
-            style={{
-              height: '100%',
-            }}
-            data={screens}
-            renderItem={({item, index}) => (
-              <Pressable
-                android_ripple={{color: 'blue'}}
-                onPress={() => {
-                  navigation.navigate(item.screen);
-                }}
+    <SafeAreaProvider>
+      <SafeAreaView>
+        <FlatList
+          style={{
+            height: '100%',
+          }}
+          data={screens}
+          renderItem={({item, index}) => (
+            <Pressable
+              android_ripple={{color: 'blue'}}
+              onPress={() => {
+                navigation.navigate(item.screen);
+              }}
+              style={{
+                backgroundColor: 'white',
+              }}>
+              {index > 0 && <Divider />}
+              <View
                 style={{
-                  backgroundColor: 'white',
+                  padding: 16,
                 }}>
-                {index > 0 && (
-                  <View
-                    style={{
-                      height: 1,
-                      backgroundColor: 'black',
-                    }}
-                  />
-                )}
-                <View
+                <Text
                   style={{
-                    padding: 16,
+                    fontSize: 16,
                   }}>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                    }}>
-                    {item.name}
-                  </Text>
-                </View>
-              </Pressable>
-            )}
-            keyExtractor={(_, index) => `navigationItem${index}`}
-          />
-        </SafeAreaView>
-      </SafeAreaProvider>
-    </>
+                  {item.name}
+                </Text>
+              </View>
+            </Pressable>
+          )}
+          keyExtractor={(_, index) => `navigationItem${index}`}
+        />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
-
-export default LandingPage;

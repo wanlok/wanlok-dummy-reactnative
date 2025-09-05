@@ -2,8 +2,6 @@ import {StyleSheet, Text} from 'react-native';
 
 const styles = StyleSheet.create({});
 
-const Starter = () => {
+export const StarterPage = () => {
   return <Text>Starter</Text>;
 };
-
-export default Starter;

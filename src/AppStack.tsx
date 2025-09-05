@@ -1,12 +1,12 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useAuth0} from 'react-native-auth0';
 import {LoginPage} from './Pages/LoginPage';
-import Starter from './Pages/Starter';
-import Landing from './Pages/LandingPage';
-import Payment from './Pages/Payment';
-import Rive from './Pages/Rive';
-import Rive2 from './Pages/Rive2';
-import LoanList from './Pages/LoanList';
+import {StarterPage} from './Pages/StarterPage';
+import {LandingPage} from './Pages/LandingPage';
+import {PaymentPage} from './Pages/PaymentPage';
+import {RivePage} from './Pages/RivePage';
+import {Rive2Page} from './Pages/Rive2Page';
+import {LoanList} from './Pages/LoanList';
 
 export const screens: {
   name: string;
@@ -60,11 +60,11 @@ const AuthenticatedStack = () => {
   const Stack = createNativeStackNavigator<AuthenticatedRootStackParamList>();
   return (
     <Stack.Navigator initialRouteName="Landing">
-      <Stack.Screen name="Landing" component={Landing} />
-      <Stack.Screen name="Starter" component={Starter} />
-      <Stack.Screen name="Payment" component={Payment} />
-      <Stack.Screen name="Rive" component={Rive} />
-      <Stack.Screen name="Rive2" component={Rive2} />
+      <Stack.Screen name="Landing" component={LandingPage} />
+      <Stack.Screen name="Starter" component={StarterPage} />
+      <Stack.Screen name="Payment" component={PaymentPage} />
+      <Stack.Screen name="Rive" component={RivePage} />
+      <Stack.Screen name="Rive2" component={Rive2Page} />
       <Stack.Screen name="LoanList" component={LoanList} />
     </Stack.Navigator>
   );

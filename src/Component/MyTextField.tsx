@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const MyTextField: FC<{
+export const MyTextField: FC<{
   title: string;
   value: string;
   setValue: (text: string) => void;
@@ -76,5 +76,3 @@ const MyTextField: FC<{
     </View>
   );
 };
-
-export default MyTextField;
