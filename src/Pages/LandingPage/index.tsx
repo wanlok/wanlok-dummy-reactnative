@@ -1,4 +1,5 @@
 import {
+  Button,
   FlatList,
   Pressable,
   SafeAreaView,
@@ -7,9 +8,10 @@ import {
   View,
 } from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList, screens} from '../../Dummy';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {useAuth0} from 'react-native-auth0';
+import {AuthenticatedRootStackParamList} from '../../AppStack';
 
 const styles = StyleSheet.create({
   list: {
@@ -30,11 +32,54 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeScreen = ({
+const screens: {
+  name: string;
+  screen: any;
+}[] = [
+  {
+    name: 'Starter',
+    screen: 'Starter',
+  },
+  {
+    name: 'Payment',
+    screen: 'Payment',
+  },
+  {
+    name: 'Rive',
+    screen: 'Rive',
+  },
+  {
+    name: 'Rive 2',
+    screen: 'Rive2',
+  },
+  {
+    name: 'Loan List',
+    screen: 'LoanList',
+  },
+];
+
+const LandingPage = ({
   navigation,
 }: {
-  navigation: NativeStackNavigationProp<RootStackParamList>;
+  navigation: NativeStackNavigationProp<AuthenticatedRootStackParamList>;
 }) => {
+  const {clearSession} = useAuth0();
+
+  const onLogout = async () => {
+    try {
+      await clearSession();
+      // navigation.replace('Login');
+    } catch (e) {
+      console.log('Log out cancelled');
+    }
+  };
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <Button title="Logout" onPress={onLogout} />,
+    });
+  }, [navigation]);
+
   return (
     <>
       <SafeAreaProvider>
@@ -63,4 +108,4 @@ const HomeScreen = ({
   );
 };
 
-export default HomeScreen;
+export default LandingPage;

@@ -1,7 +1,6 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {FC, useEffect, useReducer, useState} from 'react';
 import {Button, Text, View} from 'react-native';
-import {RootStackParamList} from '../App';
 // import axios from 'axios';
 
 interface Student {
