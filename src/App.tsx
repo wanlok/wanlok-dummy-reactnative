@@ -1,63 +1,68 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Starter from './Screen/Starter';
-import Landing from './Screen/Landing';
-import Payment from './Screen/Payment';
-import Rive from './Screen/Rive';
-import Rive2 from './Screen/Rive2';
-import LoanList from './Screen/LoanList';
+import {Button, Text, View, StyleSheet} from 'react-native';
+import {useAuth0, Auth0Provider} from 'react-native-auth0';
+import Config from 'react-native-config';
 
-export type RootStackParamList = {
-  Landing: undefined;
-  Starter: {data: string};
-  Payment: undefined;
-  Rive: undefined;
-  Rive2: undefined;
-  LoanList: undefined;
+const Home = () => {
+  const {authorize, clearSession, user, error, isLoading} = useAuth0();
+
+  const onLogin = async () => {
+    try {
+      await authorize();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const onLogout = async () => {
+    try {
+      await clearSession();
+    } catch (e) {
+      console.log('Log out cancelled');
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <View style={styles.container}>
+        <Text>Loading</Text>
+      </View>
+    );
+  }
+
+  const loggedIn = user !== undefined && user !== null;
+
+  return (
+    <View style={styles.container}>
+      {loggedIn && <Text>You are logged in as {user.name}</Text>}
+      {!loggedIn && <Text>You are not logged in</Text>}
+      {error && <Text>{error.message}</Text>}
+
+      <Button
+        onPress={loggedIn ? onLogout : onLogin}
+        title={loggedIn ? 'Log Out' : 'Log In'}
+      />
+    </View>
+  );
 };
-
-export const screens: {
-  name: string;
-  screen: any;
-}[] = [
-  {
-    name: 'Starter',
-    screen: 'Starter',
-  },
-  {
-    name: 'Payment',
-    screen: 'Payment',
-  },
-  {
-    name: 'Rive',
-    screen: 'Rive',
-  },
-  {
-    name: 'Rive 2',
-    screen: 'Rive2',
-  },
-  {
-    name: 'Loan List',
-    screen: 'LoanList',
-  },
-];
-
-const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Landing">
-        <Stack.Screen name="Landing" component={Landing} />
-        <Stack.Screen name="Starter" component={Starter} />
-        <Stack.Screen name="Payment" component={Payment} />
-        <Stack.Screen name="Rive" component={Rive} />
-        <Stack.Screen name="Rive2" component={Rive2} />
-        <Stack.Screen name="LoanList" component={LoanList} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Auth0Provider
+      domain={Config.AUTH0_DOMAIN ?? ''}
+      clientId={Config.AUTH0_CLIENT_ID ?? ''}>
+      <Home />
+    </Auth0Provider>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+});
 
 export default App;

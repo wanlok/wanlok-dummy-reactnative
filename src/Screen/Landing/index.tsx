@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList, screens} from '../../App';
+import {RootStackParamList, screens} from '../../Dummy';
 import React from 'react';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 

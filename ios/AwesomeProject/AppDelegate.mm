@@ -2,6 +2,8 @@
 
 #import <React/RCTBundleURLProvider.h>
 
+#import <React/RCTLinkingManager.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -26,6 +28,15 @@
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+}
+
+(BOOL)application:(UIApplication *)app openURL:(NSURL *)url
+      options:(NSDictionary&lt;UIApplicationOpenURLOptionsKey, id&gt; *)options
+
+
+
+{
+return [RCTLinkingManager application:app openURL:url options:options];
 }
 
 @end
