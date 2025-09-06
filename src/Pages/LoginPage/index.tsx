@@ -1,11 +1,17 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useAuth0} from 'react-native-auth0';
 import {WButton} from '../../Component/WButton';
 
 export const LoginPage = () => {
-  const {authorize} = useAuth0();
+  const {authorize, error} = useAuth0();
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (error?.message === 'User cancelled the Auth') {
+      setLoading(false);
+    }
+  }, [error]);
 
   const onLogin = async () => {
     try {
@@ -25,7 +31,7 @@ export const LoginPage = () => {
         alignItems: 'center',
       }}>
       {/* {error && <Text>{error.message}</Text>} */}
-      <WButton title={'Login'} loading={loading} onPress={onLogin} />
+      <WButton title={'Login'} loading={loading} onClick={onLogin} />
     </View>
   );
 };

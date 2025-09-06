@@ -62,22 +62,22 @@ export const RivePage = () => {
         </Rive>
       </View>
       <WButton
-        onPress={play}
+        onClick={play}
         title="Play"
         style={{width: '100%', marginTop: 1}}
       />
       <WButton
-        onPress={pause}
+        onClick={pause}
         title="Pause"
         style={{width: '100%', marginTop: 1}}
       />
       <WButton
-        onPress={stop}
+        onClick={stop}
         title="Stop"
         style={{width: '100%', marginTop: 1}}
       />
       <WButton
-        onPress={reset}
+        onClick={reset}
         title="Reset"
         style={{width: '100%', marginTop: 1}}
       />

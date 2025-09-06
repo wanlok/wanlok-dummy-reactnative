@@ -10,12 +10,12 @@ import {Colors} from '../Utils/Colors';
 export const WButton = ({
   title,
   loading = false,
-  onPress,
+  onClick,
   style,
 }: {
   title: string;
   loading?: boolean;
-  onPress: () => void;
+  onClick: () => void;
   style?: StyleProp<ViewStyle>;
 }) => {
   return (
@@ -31,7 +31,7 @@ export const WButton = ({
         },
         style,
       ]}
-      onPress={onPress}>
+      onPress={onClick}>
       <Text
         style={{
           color: Colors.button.text,
