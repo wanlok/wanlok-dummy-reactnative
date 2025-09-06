@@ -13,7 +13,7 @@ export const LoginPage = () => {
     }
   }, [error]);
 
-  const onLogin = async () => {
+  const onLoginButtonCick = async () => {
     try {
       setLoading(true);
       await authorize();
@@ -30,8 +30,7 @@ export const LoginPage = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      {/* {error && <Text>{error.message}</Text>} */}
-      <WButton title={'Login'} loading={loading} onClick={onLogin} />
+      <WButton title={'Login'} loading={loading} onClick={onLoginButtonCick} />
     </View>
   );
 };
