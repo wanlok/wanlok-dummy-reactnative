@@ -9,9 +9,10 @@ export const LoginPage = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCount(prev => prev + 1);
-    }, 1000);
+    const interval = setInterval(
+      () => setCount(previous => previous + 1),
+      1000,
+    );
     return () => clearInterval(interval);
   }, []);
 
@@ -36,8 +37,13 @@ export const LoginPage = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>{count}</Text>
-      <WButton title={'Login'} loading={loading} onClick={onLoginButtonCick} />
+      <Text style={{fontSize: 16}}>{count}</Text>
+      <WButton
+        title={'Login'}
+        loading={loading}
+        style={{marginTop: 16}}
+        onClick={onLoginButtonCick}
+      />
       {!loading && error && (
         <View
           style={{
