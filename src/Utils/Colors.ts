@@ -1,7 +1,7 @@
 export const Colors = {
   button: {
-    background: '#555555',
-    text: '#FFFFFF',
-    ripple: '#222222',
+    background: '#DDDDDD',
+    text: '#000000',
+    ripple: '#CCCCCC',
   },
 };

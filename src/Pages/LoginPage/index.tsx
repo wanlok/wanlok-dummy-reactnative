@@ -1,13 +1,18 @@
-import {Button, View} from 'react-native';
+import {useState} from 'react';
+import {View} from 'react-native';
 import {useAuth0} from 'react-native-auth0';
+import {WButton} from '../../Component/WButton';
 
 export const LoginPage = () => {
   const {authorize} = useAuth0();
+  const [loading, setLoading] = useState(false);
 
   const onLogin = async () => {
     try {
+      setLoading(true);
       await authorize();
     } catch (e) {
+      setLoading(false);
       console.log(e);
     }
   };
@@ -19,11 +24,8 @@ export const LoginPage = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      {/* {user && <Text>Logged in as {user.name}</Text>}
-      {!user && <Text>Not logged in</Text>}
-      {error && <Text>{error.message}</Text>} */}
-
-      <Button onPress={onLogin} title={'Log In'} />
+      {/* {error && <Text>{error.message}</Text>} */}
+      <WButton title={'Login'} loading={loading} onPress={onLogin} />
     </View>
   );
 };

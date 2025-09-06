@@ -1,12 +1,20 @@
-import {Pressable, StyleProp, Text, ViewStyle} from 'react-native';
+import {
+  ActivityIndicator,
+  Pressable,
+  StyleProp,
+  Text,
+  ViewStyle,
+} from 'react-native';
 import {Colors} from '../Utils/Colors';
 
 export const WButton = ({
   title,
+  loading = false,
   onPress,
   style,
 }: {
   title: string;
+  loading?: boolean;
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
 }) => {
@@ -17,7 +25,7 @@ export const WButton = ({
       }}
       style={[
         {
-          alignItems: 'center',
+          flexDirection: 'row',
           backgroundColor: Colors.button.background,
           padding: 16,
         },
@@ -31,6 +39,7 @@ export const WButton = ({
         }}>
         {title}
       </Text>
+      {loading && <ActivityIndicator size="small" style={{marginLeft: 8}} />}
     </Pressable>
   );
 };
