@@ -1,3 +1,4 @@
+import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useAuth0} from 'react-native-auth0';
 import {LoginPage} from './Pages/LoginPage';
@@ -47,7 +48,7 @@ export type AuthenticatedRootStackParamList = {
   LoanList: undefined;
 };
 
-const Stack = () => {
+const LoginStack = () => {
   const Stack = createNativeStackNavigator<RootStackParamList>();
   return (
     <Stack.Navigator initialRouteName="Login">
@@ -72,5 +73,9 @@ const AuthenticatedStack = () => {
 
 export const AppStack = () => {
   const {user} = useAuth0();
-  return user ? AuthenticatedStack() : Stack();
+  return (
+    <NavigationContainer>
+      {user ? <AuthenticatedStack /> : <LoginStack />}
+    </NavigationContainer>
+  );
 };

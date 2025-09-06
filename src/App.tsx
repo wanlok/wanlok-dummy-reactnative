@@ -1,8 +1,6 @@
 import React from 'react';
 import {Auth0Provider} from 'react-native-auth0';
 import Config from 'react-native-config';
-
-import {NavigationContainer} from '@react-navigation/native';
 import {AppStack} from './AppStack';
 
 export const App = () => {
@@ -10,9 +8,7 @@ export const App = () => {
     <Auth0Provider
       domain={Config.AUTH0_DOMAIN ?? ''}
       clientId={Config.AUTH0_CLIENT_ID ?? ''}>
-      <NavigationContainer>
-        <AppStack />
-      </NavigationContainer>
+      <AppStack />
     </Auth0Provider>
   );
 };

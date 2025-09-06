@@ -1,17 +1,25 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import {useAuth0} from 'react-native-auth0';
 import {WButton} from '../../Component/WButton';
 
 export const LoginPage = () => {
   const {authorize, error} = useAuth0();
+  const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(prev => prev + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     setLoading(false);
   }, [error]);
 
-  const onLoginButtonCick = async () => {
+  const onLoginButtonCick = useCallback(async () => {
     try {
       setLoading(true);
       await authorize();
@@ -19,7 +27,7 @@ export const LoginPage = () => {
       setLoading(false);
       console.log(e);
     }
-  };
+  }, [count]);
 
   return (
     <View
@@ -28,8 +36,9 @@ export const LoginPage = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
+      <Text>{count}</Text>
       <WButton title={'Login'} loading={loading} onClick={onLoginButtonCick} />
-      {error && (
+      {!loading && error && (
         <View
           style={{
             width: '100%',
