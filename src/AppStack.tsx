@@ -6,6 +6,7 @@ import {StarterPage} from './Pages/StarterPage';
 import {LandingPage} from './Pages/LandingPage';
 import {PaymentPage} from './Pages/PaymentPage';
 import {LoanList} from './Pages/LoanList';
+import {KeyboardTest} from './Pages/KeyboardTest';
 
 export const screens: {
   name: string;
@@ -23,6 +24,10 @@ export const screens: {
     name: 'Loan List',
     screen: 'LoanList',
   },
+  {
+    name: 'Keyboard Test',
+    screen: 'KeyboardTest',
+  },
 ];
 
 export type RootStackParamList = {
@@ -34,6 +39,7 @@ export type AuthenticatedRootStackParamList = {
   Starter: {data: string};
   Payment: undefined;
   LoanList: undefined;
+  KeyboardTest: undefined;
 };
 
 const LoginStack = () => {
@@ -53,6 +59,7 @@ const AuthenticatedStack = () => {
       <Stack.Screen name="Starter" component={StarterPage} />
       <Stack.Screen name="Payment" component={PaymentPage} />
       <Stack.Screen name="LoanList" component={LoanList} />
+      <Stack.Screen name="KeyboardTest" component={KeyboardTest} />
     </Stack.Navigator>
   );
 };
@@ -61,7 +68,8 @@ export const AppStack = () => {
   const {user} = useAuth0();
   return (
     <NavigationContainer>
-      {user ? <AuthenticatedStack /> : <LoginStack />}
+      {/* {user ? <AuthenticatedStack /> : <LoginStack />} */}
+      <AuthenticatedStack />
     </NavigationContainer>
   );
 };
