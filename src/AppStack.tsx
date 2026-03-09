@@ -5,8 +5,6 @@ import {LoginPage} from './Pages/LoginPage';
 import {StarterPage} from './Pages/StarterPage';
 import {LandingPage} from './Pages/LandingPage';
 import {PaymentPage} from './Pages/PaymentPage';
-import {RivePage} from './Pages/RivePage';
-import {Rive2Page} from './Pages/Rive2Page';
 import {LoanList} from './Pages/LoanList';
 
 export const screens: {
@@ -22,14 +20,6 @@ export const screens: {
     screen: 'Payment',
   },
   {
-    name: 'Rive',
-    screen: 'Rive',
-  },
-  {
-    name: 'Rive 2',
-    screen: 'Rive2',
-  },
-  {
     name: 'Loan List',
     screen: 'LoanList',
   },
@@ -43,8 +33,6 @@ export type AuthenticatedRootStackParamList = {
   Landing: undefined;
   Starter: {data: string};
   Payment: undefined;
-  Rive: undefined;
-  Rive2: undefined;
   LoanList: undefined;
 };
 
@@ -64,8 +52,6 @@ const AuthenticatedStack = () => {
       <Stack.Screen name="Landing" component={LandingPage} />
       <Stack.Screen name="Starter" component={StarterPage} />
       <Stack.Screen name="Payment" component={PaymentPage} />
-      <Stack.Screen name="Rive" component={RivePage} />
-      <Stack.Screen name="Rive2" component={Rive2Page} />
       <Stack.Screen name="LoanList" component={LoanList} />
     </Stack.Navigator>
   );

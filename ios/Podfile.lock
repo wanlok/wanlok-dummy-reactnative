@@ -1514,10 +1514,6 @@ PODS:
     - React-logger (= 0.75.4)
     - React-perflogger (= 0.75.4)
     - React-utils (= 0.75.4)
-  - rive-react-native (7.3.0):
-    - React-Core
-    - RiveRuntime (= 5.14.0)
-  - RiveRuntime (5.14.0)
   - RNScreens (3.35.0):
     - DoubleConversion
     - glog
@@ -1612,7 +1608,6 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-  - rive-react-native (from `../node_modules/rive-react-native`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -1620,7 +1615,6 @@ SPEC REPOS:
   trunk:
     - Auth0
     - JWTDecode
-    - RiveRuntime
     - SimpleKeychain
     - SocketRocket
 
@@ -1756,8 +1750,6 @@ EXTERNAL SOURCES:
     :path: build/generated/ios
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
-  rive-react-native:
-    :path: "../node_modules/rive-react-native"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   Yoga:
@@ -1831,8 +1823,6 @@ SPEC CHECKSUMS:
   React-utils: cbe8b8b3d7b2ac282e018e46f0e7b25cdc87c5a0
   ReactCodegen: 4bcb34e6b5ebf6eef5cee34f55aa39991ea1c1f1
   ReactCommon: 6a952e50c2a4b694731d7682aaa6c79bc156e4ad
-  rive-react-native: 9d724daa93efa3066e19e53960f83df5098cc112
-  RiveRuntime: c470cc8daa0c192c678f7abb35b980f95d2bb625
   RNScreens: c7ceced6a8384cb9be5e7a5e88e9e714401fd958
   SimpleKeychain: f8707c8e97b38c6a6e687b17732afc9bcef06439
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
